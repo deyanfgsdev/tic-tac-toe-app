@@ -1,15 +1,19 @@
 import "./App.scss";
+
+import Logo from "./components/Logo/Logo";
 import Board from "./components/Board/Board";
 
-function App() {
+const App = () => {
+  const logoSrc = "https://i.ibb.co/BwT2KCS/logo.png";
+
   return (
     <>
       <div className="tic-tact-toe-app">
-        <h1 className="tic-tact-toe-main-title">Tic tac toe Game</h1>
+        <Logo logoSrc={logoSrc} />
         <Board />
       </div>
     </>
   );
-}
+};
 
 export default App;
