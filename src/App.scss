@@ -2,13 +2,17 @@ $blue_primary: #3d7ad6;
 
 #root {
   max-width: 1280px;
-  padding: 24px 16px;
   @media (min-width: 768px) {
     display: flex;
     justify-content: center;
   }
   .tic-tact-toe-app {
-    .tic-tact-toe-logo {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: $blue_primary;
+    .tic-tac-tope-content-wrap {
+      padding: 24px 16px;
     }
   }
 }

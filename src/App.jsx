@@ -2,15 +2,19 @@ import "./App.scss";
 
 import Logo from "./components/Logo/Logo";
 import Board from "./components/Board/Board";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
-  const logoSrc = "https://i.ibb.co/BwT2KCS/logo.png";
+  const logoSrc = "https://i.ibb.co/CHJkpRX/tic-tac-toe-logo.png";
 
   return (
     <>
       <div className="tic-tact-toe-app">
-        <Logo logoSrc={logoSrc} />
-        <Board />
+        <div className="tic-tac-tope-content-wrap">
+          <Logo logoSrc={logoSrc} />
+          <Board />
+        </div>
+        <Footer />
       </div>
     </>
   );
