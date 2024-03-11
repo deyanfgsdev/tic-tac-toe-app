@@ -2,7 +2,10 @@
   display: flex;
   justify-content: center;
   .tic-tact-toe-logo-img {
-    max-width: 250px;
+    max-width: 240px;
     height: auto;
+    @media (min-width: 1200px) {
+      max-width: 300px;
+    }
   }
 }
