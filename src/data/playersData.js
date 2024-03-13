@@ -1,7 +1,7 @@
 const playersData = [
   {
     id: 1,
-    name: null,
+    name: "Player 1",
     isYourTurn: false,
     winner: false,
     imgSrc: "https://i.ibb.co/hY3BRcC/tic-tac-toe-player-1.png",
@@ -9,7 +9,7 @@ const playersData = [
   },
   {
     id: 2,
-    name: null,
+    name: "Player 2",
     isYourTurn: false,
     winner: false,
     imgSrc: "https://i.ibb.co/3h3CVQV/tic-tac-toe-player-2.png",
