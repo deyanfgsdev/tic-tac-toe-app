@@ -12,9 +12,26 @@ $blue_primary: #3d7ad6;
       align-items: center;
       max-width: 1440px;
       margin: 0 auto;
-      padding: 24px 16px 98px;
+      padding: 24px 16px 124px;
       @media (min-width: 1200px) {
-        padding-bottom: 190px;
+        padding-bottom: 160px;
+      }
+      .tic-tac-toe-players {
+        margin-top: 36px;
+        .tic-tac-toe-players-list {
+          margin: 0;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .tic-tac-toe-player {
+            list-style: none;
+            text-align: center;
+            + .tic-tac-toe-player {
+              margin-left: 28px;
+            }
+          }
+        }
       }
     }
   }
