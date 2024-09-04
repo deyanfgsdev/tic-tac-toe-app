@@ -8,7 +8,7 @@ const App = () => {
   const logoSrc = "https://i.ibb.co/CHJkpRX/tic-tac-toe-logo.png";
 
   return (
-    <div className="tic-tact-toe--app">
+    <div className="tic-tac-toe--app">
       <div className="tic-tac-toe--content-wrap">
         <Logo logoSrc={logoSrc} />
         <Board />
