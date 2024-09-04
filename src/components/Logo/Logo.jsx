@@ -2,11 +2,11 @@ import "./Logo.scss";
 
 const Logo = ({ logoSrc }) => {
   return (
-    <div className="tic-tact-toe-logo">
+    <div className="tic-tac-toe--logo">
       <img
         src={logoSrc}
-        alt="Tic tac toe Logo"
-        className="tic-tact-toe-logo-img"
+        alt="Tic Tac Toe Logo"
+        className="tic-tac-toe--logo-img"
       />
     </div>
   );
