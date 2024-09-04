@@ -15,7 +15,7 @@ footer {
     align-items: center;
   }
 
-  .tic-tac-toe-footer-author {
+  .tic-tac-toe--footer-author {
     font-size: 16px;
     font-weight: 400;
     color: #000;
@@ -26,10 +26,11 @@ footer {
       font-size: 20px;
     }
   }
-  .tic-tac-toe-footer-rrss {
+  .tic-tac-toe--footer-rrss {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 12px;
     margin-top: 16px;
     @media (min-width: 768px) {
       margin-top: 0;
@@ -39,9 +40,6 @@ footer {
       color: $blue_primary;
       @media (min-width: 768px) {
         font-size: 32px;
-      }
-      & + a {
-        margin-left: 12px;
       }
     }
   }
