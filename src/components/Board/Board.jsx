@@ -1,19 +1,48 @@
+import { useState } from "react";
+
 import "./Board.scss";
-import Button from "../Button/Button";
+
+import initialPlayersData from "../../data/initialPlayersData";
+
+import Square from "../Square/Square";
+import Player from "../Player/Player";
 
 const Board = () => {
+  const [dataX, dataO] = initialPlayersData;
+
+  const [board, setBoard] = useState(Array(9).fill(null)); // Initial null values
+  const [turn, setTurn] = useState(dataX.imgSrc); // X
+
+  const updateBoard = (index) => {};
+
   return (
-    <div className="tic-tact-toe-board">
-      <Button />
-      <Button />
-      <Button />
-      <Button />
-      <Button />
-      <Button />
-      <Button />
-      <Button />
-      <Button />
-    </div>
+    <>
+      <div className="tic-tac-toe--board">
+        {board.map((squareImg, index) => {
+          return (
+            <Square key={index} index={index} updateBoard={updateBoard}>
+              {squareImg}
+            </Square>
+          );
+        })}
+      </div>
+
+      <div className="tic-tac-toe--players">
+        {initialPlayersData.map((player) => {
+          const { id, name, imgSrc, alt } = player;
+
+          return (
+            <Player
+              key={id}
+              initialName={name}
+              imgSrc={imgSrc}
+              alt={alt}
+              isYourTurn={turn === imgSrc}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 };
 

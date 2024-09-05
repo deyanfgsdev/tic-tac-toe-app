@@ -1,34 +1,19 @@
-import "./Player.scss";
-
 import { useState } from "react";
 
-const Player = ({
-  playerId,
-  initialPlayerName,
-  initialCurrentTurn,
-  initialIsWinner,
-  imgSrc,
-  alt,
-}) => {
-  const [name, setName] = useState(initialPlayerName);
-  const [isYourTurn, setIsYourTurn] = useState(initialCurrentTurn);
-  const [isWinner, setIsWinner] = useState(initialIsWinner);
+import "./Player.scss";
+
+const Player = ({ initialName, imgSrc, alt, isYourTurn }) => {
+  const [name, setName] = useState(initialName);
+
+  const classNameImg = isYourTurn
+    ? "tic-tac-toe-player--img is-your-turn"
+    : "tic-tac-toe-player--img";
 
   return (
-    <div
-      className={`tic-tac-toe-player-container ${
-        playerId === 1 ? "tic-tac-toe-player-1" : "tic-tac-toe-player-2"
-      }`}
-    >
-      <img
-        src={imgSrc}
-        alt={alt}
-        className={`tic-tac-toe-player-img ${
-          playerId === 1 ? "player-1-img" : "player-2-img"
-        }`}
-      />
-      <h2 className="tic-tac-toe-player-name">{name}</h2>
-      <button className="tic-tac-toe-player-change-name-button">
+    <div className="tic-tac-toe--player">
+      <img src={imgSrc} alt={alt} className={classNameImg} />
+      <h2 className="tic-tac-toe-player--name">{name}</h2>
+      <button className="tic-tac-toe-player--change-name-button">
         Change Name
       </button>
     </div>

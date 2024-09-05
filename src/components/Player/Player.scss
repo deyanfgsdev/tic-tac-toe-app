@@ -1,38 +1,45 @@
 $yellow_primary: #f5d24b;
 
-.tic-tac-toe-player-img {
-  max-width: 70px;
-  height: auto;
-}
-
-.tic-tac-toe-player-img.player-2-img {
-  max-width: 80px;
-}
-
-.tic-tac-toe-player-name {
-  font-size: 24px;
-  line-height: 28px;
-  color: #fff;
-  margin-top: 16px;
-  margin-bottom: 0;
-  @media (min-width: 768px) {
-    font-size: 28px;
-    line-height: 32px;
+.tic-tac-toe--player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .tic-tac-toe-player--img {
+    max-width: 60px;
+    height: 60px;
+    @media (min-width: 768px) {
+      max-width: 90px;
+      height: 90px;
+    }
   }
-}
-
-.tic-tac-toe-player-change-name-button {
-  display: block;
-  padding: 16px;
-  border-radius: 6px;
-  background-color: $yellow_primary;
-  border: 2px solid $yellow_primary;
-  font-size: 16px;
-  font-weight: 700;
-  color: #000;
-  cursor: pointer;
-  margin-top: 20px;
-  @media (min-width: 768px) {
-    font-size: 20px;
+  .tic-tac-toe-player--name {
+    font-size: 24px;
+    line-height: 28px;
+    color: #fff;
+    margin-top: 16px;
+    margin-bottom: 0;
+    @media (min-width: 768px) {
+      font-size: 28px;
+      line-height: 32px;
+    }
+  }
+  .tic-tac-toe-player--change-name-button {
+    display: block;
+    padding: 16px;
+    border-radius: 6px;
+    background-color: $yellow_primary;
+    border: 2px solid $yellow_primary;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #000;
+    cursor: pointer;
+    margin-top: 20px;
+    @media (min-width: 375px) {
+      font-size: 16px;
+    }
+    @media (min-width: 768px) {
+      font-size: 20px;
+    }
   }
 }
