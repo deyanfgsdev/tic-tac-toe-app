@@ -7,6 +7,7 @@ import winnerCombinationsData from "../../data/winnerCombinationsData";
 
 import Square from "../Square/Square";
 import Player from "../Player/Player";
+import ModalWinner from "../ModalWinner/ModalWinner";
 
 const Board = () => {
   const [dataX, dataO] = initialPlayersData;
@@ -81,6 +82,8 @@ const Board = () => {
           );
         })}
       </div>
+
+      <ModalWinner />
     </>
   );
 };

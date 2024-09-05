@@ -1,0 +1,65 @@
+$yellow_primary: #f5d24b;
+
+.tic-tac-toe--modal-winner {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.8);
+  &.tic-tac-toe--modal-winner-show {
+    display: block;
+  }
+  .tic-tac-toe--modal-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    .tic-tac-toe--modal-title {
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 700;
+      text-align: center;
+      color: #000;
+      margin: 0;
+    }
+    .tic-tac-toe--modal-text {
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+      color: #000;
+      margin-top: 16px;
+      margin-bottom: 0;
+    }
+    .tic-tac-toe--modal-player-img {
+      width: 100%;
+      max-width: 60px;
+      height: auto;
+      margin-top: 16px;
+    }
+    .tic-tac-toe--modal-play-again-button {
+      display: block;
+      width: 100%;
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #000;
+      background-color: $yellow_primary;
+      border: 2px solid $yellow_primary;
+      padding: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 16px;
+    }
+  }
+}
