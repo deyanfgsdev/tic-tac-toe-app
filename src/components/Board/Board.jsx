@@ -14,6 +14,11 @@ const Board = () => {
   const [turn, setTurn] = useState(dataX.imgSrc); // X
 
   const updateBoard = (index) => {
+    // If the square is already filled
+    if (board[index]) {
+      return;
+    }
+
     // Update with the new board
     const newBoard = [...board];
     newBoard[index] = turn;
