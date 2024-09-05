@@ -13,7 +13,16 @@ const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(null)); // Initial null values
   const [turn, setTurn] = useState(dataX.imgSrc); // X
 
-  const updateBoard = (index) => {};
+  const updateBoard = (index) => {
+    // Update with the new board
+    const newBoard = [...board];
+    newBoard[index] = turn;
+    setBoard(newBoard);
+
+    // Update the turn
+    const newTurn = turn === dataX.imgSrc ? dataO.imgSrc : dataX.imgSrc;
+    setTurn(newTurn);
+  };
 
   return (
     <>
