@@ -1,6 +1,7 @@
 $yellow_primary: #f5d24b;
+$grey_primary: #656565;
 
-.tic-tac-toe--winner-modal {
+.tic-tac-toe--edit-player-name-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -28,13 +29,39 @@ $yellow_primary: #f5d24b;
     @media (min-width: 768px) {
       max-width: 500px;
     }
-    .tic-tac-toe--modal-title {
+    .tic-tac-toe--modal-close-button {
+      position: absolute;
+      top: 24px;
+      right: 16px;
+      background-color: transparent;
+      border: 0;
+      padding: 0;
+      display: flex;
+      cursor: pointer;
+      img {
+        max-width: 40px;
+        height: auto;
+      }
+    }
+    .tic-tac-toe--modal-player-img {
+      width: 100%;
+      max-width: 60px;
+      height: auto;
+      margin-top: 48px;
+      @media (min-width: 375px) {
+        max-width: 70px;
+      }
+      @media (min-width: 768px) {
+        max-width: 80px;
+      }
+    }
+    .tic-tac-toe--modal-label {
       font-size: 20px;
       line-height: 24px;
       font-weight: 700;
       text-align: center;
       color: #000;
-      margin: 0;
+      margin-top: 16px;
       @media (min-width: 375px) {
         font-size: 24px;
         line-height: 28px;
@@ -44,35 +71,17 @@ $yellow_primary: #f5d24b;
         line-height: 36px;
       }
     }
-    .tic-tac-toe--modal-description {
-      font-size: 16px;
-      line-height: 20px;
-      text-align: center;
-      color: #000;
-      margin-top: 16px;
-      margin-bottom: 0;
-      @media (min-width: 375px) {
-        font-size: 20px;
-        line-height: 24px;
-      }
-      @media (min-width: 768px) {
-        font-size: 28px;
-        line-height: 32px;
-      }
-    }
-    .tic-tac-toe--modal-player-img {
+    .tic-tac-toe--modal-text-input {
       width: 100%;
-      max-width: 60px;
-      height: auto;
-      margin-top: 16px;
-      @media (min-width: 375px) {
-        max-width: 70px;
-      }
-      @media (min-width: 768px) {
-        max-width: 80px;
-      }
+      background-color: #fff;
+      color: $grey_primary;
+      border: 2px solid #000;
+      border-radius: 4px;
+      outline: none;
+      padding: 8px;
+      margin-top: 8px;
     }
-    .tic-tac-toe--modal-play-again-button {
+    .tic-tac-toe--modal-accept-button {
       display: block;
       width: 100%;
       font-family: "Roboto", sans-serif;

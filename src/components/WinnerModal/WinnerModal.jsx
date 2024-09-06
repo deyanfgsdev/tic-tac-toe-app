@@ -9,7 +9,12 @@ const WinnerModal = ({ winnerPlayer, playAgain }) => {
     (player) => player.imgSrc === winnerPlayer
   );
 
+  if (winnerPlayerImg) {
+    document.body.classList.add("no-scroll");
+  }
+
   const handlePlayAgainClick = () => {
+    document.body.classList.remove("no-scroll");
     playAgain();
   };
 

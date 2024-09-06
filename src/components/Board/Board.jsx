@@ -8,6 +8,7 @@ import winnerCombinationsData from "../../data/winnerCombinationsData";
 import Square from "../Square/Square";
 import Player from "../Player/Player";
 import WinnerModal from "../WinnerModal/WinnerModal";
+import EditPlayerNameModal from "../EditPlayerNameModal/EditPlayerNameModal";
 
 const Board = () => {
   const [dataX, dataO] = initialPlayersData;
@@ -15,6 +16,7 @@ const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(null)); // Initial null values
   const [turn, setTurn] = useState(dataX.imgSrc); // X
   const [winner, setWinner] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const checkWinnerPlayer = (newBoard) => {
     for (const combination of winnerCombinationsData) {
@@ -68,6 +70,11 @@ const Board = () => {
     setWinner(null);
   };
 
+  const checkShowEditModal = (showModal) => {
+    const newShowEditModal = showModal ? true : false;
+    setShowEditModal(newShowEditModal);
+  };
+
   return (
     <>
       <div className="tic-tac-toe--board">
@@ -91,6 +98,7 @@ const Board = () => {
               imgSrc={imgSrc}
               alt={alt}
               isYourTurn={turn === imgSrc}
+              checkShowEditModal={checkShowEditModal}
             />
           );
         })}
@@ -101,6 +109,12 @@ const Board = () => {
       </button>
 
       <WinnerModal winnerPlayer={winner} playAgain={playAgain} />
+      {showEditModal && (
+        <EditPlayerNameModal
+          playerImg={turn}
+          checkShowEditModal={checkShowEditModal}
+        />
+      )}
     </>
   );
 };
