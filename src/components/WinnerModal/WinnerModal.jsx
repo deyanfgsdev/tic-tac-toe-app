@@ -9,16 +9,12 @@ const WinnerModal = ({ winnerPlayer, playAgain }) => {
     (player) => player.imgSrc === winnerPlayer
   );
 
-  const className = winnerPlayerImg
-    ? "tic-tac-toe--winner-modal tic-tac-toe--winner-modal-show"
-    : "tic-tac-toe--winner-modal";
-
   const handlePlayAgainClick = () => {
     playAgain();
   };
 
   return (
-    <div className={className}>
+    <div className="tic-tac-toe--winner-modal">
       <div className="tic-tac-toe--modal-body">
         {winnerPlayerImg && (
           <>

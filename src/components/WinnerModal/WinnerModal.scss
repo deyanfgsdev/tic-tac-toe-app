@@ -1,7 +1,6 @@
 $yellow_primary: #f5d24b;
 
 .tic-tac-toe--winner-modal {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,9 +8,6 @@ $yellow_primary: #f5d24b;
   height: 100%;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.8);
-  &.tic-tac-toe--winner-modal-show {
-    display: block;
-  }
   .tic-tac-toe--modal-body {
     position: absolute;
     top: 50%;
