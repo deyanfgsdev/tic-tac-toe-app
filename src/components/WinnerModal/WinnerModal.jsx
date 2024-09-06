@@ -2,7 +2,7 @@ import "./WinnerModal.scss";
 
 import initialPlayersData from "../../data/initialPlayersData";
 
-const WinnerModal = ({ winnerPlayer }) => {
+const WinnerModal = ({ winnerPlayer, playAgain }) => {
   if (winnerPlayer === null) return;
 
   const winnerPlayerImg = initialPlayersData.find(
@@ -12,6 +12,10 @@ const WinnerModal = ({ winnerPlayer }) => {
   const className = winnerPlayerImg
     ? "tic-tac-toe--winner-modal tic-tac-toe--winner-modal-show"
     : "tic-tac-toe--winner-modal";
+
+  const handlePlayAgainClick = () => {
+    playAgain();
+  };
 
   return (
     <div className={className}>
@@ -36,7 +40,10 @@ const WinnerModal = ({ winnerPlayer }) => {
             </p>
           </>
         )}
-        <button className="tic-tac-toe--modal-play-again-button">
+        <button
+          className="tic-tac-toe--modal-play-again-button"
+          onClick={handlePlayAgainClick}
+        >
           Play again
         </button>
       </div>

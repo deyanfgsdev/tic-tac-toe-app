@@ -62,6 +62,12 @@ const Board = () => {
     }
   };
 
+  const playAgain = () => {
+    setBoard(Array(9).fill(null));
+    setTurn(dataX.imgSrc);
+    setWinner(null);
+  };
+
   return (
     <>
       <div className="tic-tac-toe--board">
@@ -90,7 +96,11 @@ const Board = () => {
         })}
       </div>
 
-      <WinnerModal winnerPlayer={winner} />
+      <button className="tic-tac-toe--restart-game-button" onClick={playAgain}>
+        Restart game
+      </button>
+
+      <WinnerModal winnerPlayer={winner} playAgain={playAgain} />
     </>
   );
 };

@@ -1,3 +1,5 @@
+$yellow_primary: #f5d24b;
+
 .tic-tac-toe--board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -35,4 +37,24 @@
   justify-content: center;
   gap: 24px;
   margin-top: 32px;
+}
+
+.tic-tac-toe--restart-game-button {
+  display: block;
+  padding: 16px;
+  border-radius: 6px;
+  background-color: $yellow_primary;
+  border: 2px solid $yellow_primary;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  margin-top: 32px;
+  @media (min-width: 375px) {
+    font-size: 16px;
+  }
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 }
