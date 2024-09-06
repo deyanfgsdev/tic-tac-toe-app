@@ -1,6 +1,6 @@
 $yellow_primary: #f5d24b;
 
-.tic-tac-toe--modal-winner {
+.tic-tac-toe--winner-modal {
   display: none;
   position: fixed;
   top: 0;
@@ -9,7 +9,7 @@ $yellow_primary: #f5d24b;
   height: 100%;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.8);
-  &.tic-tac-toe--modal-winner-show {
+  &.tic-tac-toe--winner-modal-show {
     display: block;
   }
   .tic-tac-toe--modal-body {
@@ -21,10 +21,17 @@ $yellow_primary: #f5d24b;
     border-radius: 24px;
     width: 100%;
     max-width: 280px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 24px 16px;
+    @media (min-width: 375px) {
+      max-width: 320px;
+    }
+    @media (min-width: 768px) {
+      max-width: 500px;
+    }
     .tic-tac-toe--modal-title {
       font-size: 20px;
       line-height: 24px;
@@ -32,26 +39,49 @@ $yellow_primary: #f5d24b;
       text-align: center;
       color: #000;
       margin: 0;
+      @media (min-width: 375px) {
+        font-size: 24px;
+        line-height: 28px;
+      }
+      @media (min-width: 768px) {
+        font-size: 32px;
+        line-height: 36px;
+      }
     }
-    .tic-tac-toe--modal-text {
+    .tic-tac-toe--modal-description {
       font-size: 16px;
       line-height: 20px;
       text-align: center;
       color: #000;
       margin-top: 16px;
       margin-bottom: 0;
+      @media (min-width: 375px) {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      @media (min-width: 768px) {
+        font-size: 28px;
+        line-height: 32px;
+      }
     }
     .tic-tac-toe--modal-player-img {
       width: 100%;
       max-width: 60px;
       height: auto;
       margin-top: 16px;
+      @media (min-width: 375px) {
+        max-width: 70px;
+      }
+      @media (min-width: 768px) {
+        max-width: 80px;
+      }
     }
     .tic-tac-toe--modal-play-again-button {
       display: block;
       width: 100%;
       font-family: "Roboto", sans-serif;
       font-size: 16px;
+      line-height: 20px;
       font-weight: 700;
       color: #000;
       background-color: $yellow_primary;
@@ -60,6 +90,14 @@ $yellow_primary: #f5d24b;
       border-radius: 6px;
       cursor: pointer;
       margin-top: 16px;
+      @media (min-width: 375px) {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      @media (min-width: 768px) {
+        font-size: 24px;
+        line-height: 28px;
+      }
     }
   }
 }

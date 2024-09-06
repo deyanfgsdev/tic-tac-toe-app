@@ -17,3 +17,7 @@ body {
 :before {
   box-sizing: border-box;
 }
+
+.no-scroll {
+  overflow: hidden;
+}

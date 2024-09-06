@@ -7,7 +7,7 @@ import winnerCombinationsData from "../../data/winnerCombinationsData";
 
 import Square from "../Square/Square";
 import Player from "../Player/Player";
-import ModalWinner from "../ModalWinner/ModalWinner";
+import ModalWinner from "../WinnerModal/WinnerModal";
 
 const Board = () => {
   const [dataX, dataO] = initialPlayersData;
