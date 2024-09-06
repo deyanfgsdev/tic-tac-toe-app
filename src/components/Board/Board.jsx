@@ -7,7 +7,7 @@ import winnerCombinationsData from "../../data/winnerCombinationsData";
 
 import Square from "../Square/Square";
 import Player from "../Player/Player";
-import ModalWinner from "../WinnerModal/WinnerModal";
+import WinnerModal from "../WinnerModal/WinnerModal";
 
 const Board = () => {
   const [dataX, dataO] = initialPlayersData;
@@ -16,7 +16,7 @@ const Board = () => {
   const [turn, setTurn] = useState(dataX.imgSrc); // X
   const [winner, setWinner] = useState(null);
 
-  const checkWinner = (newBoard) => {
+  const checkWinnerPlayer = (newBoard) => {
     for (const combination of winnerCombinationsData) {
       const [a, b, c] = combination;
 
@@ -25,11 +25,11 @@ const Board = () => {
         newBoard[a] === newBoard[b] &&
         newBoard[a] === newBoard[c]
       ) {
-        return true;
+        return newBoard[a]; // Return the winner player
       }
     }
 
-    return null;
+    return null; // No winner
   };
 
   const updateBoard = (index) => {
@@ -48,10 +48,17 @@ const Board = () => {
     setTurn(newTurn);
 
     // Check if there is a winner
-    const newWinner = checkWinner(newBoard);
+    const newWinner = checkWinnerPlayer(newBoard);
 
     if (newWinner) {
       setWinner(newWinner);
+    } else {
+      // Check if it is a tie
+      const isTie = newBoard.every((square) => square !== null);
+
+      if (isTie) {
+        setWinner(false);
+      }
     }
   };
 
@@ -83,7 +90,7 @@ const Board = () => {
         })}
       </div>
 
-      <ModalWinner />
+      <WinnerModal winnerPlayer={winner} />
     </>
   );
 };

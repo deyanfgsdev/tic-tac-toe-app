@@ -2,17 +2,40 @@ import "./WinnerModal.scss";
 
 import initialPlayersData from "../../data/initialPlayersData";
 
-const ModalWinner = () => {
+const WinnerModal = ({ winnerPlayer }) => {
+  if (winnerPlayer === null) return;
+
+  const winnerPlayerImg = initialPlayersData.find(
+    (player) => player.imgSrc === winnerPlayer
+  );
+
+  const className = winnerPlayerImg
+    ? "tic-tac-toe--winner-modal tic-tac-toe--winner-modal-show"
+    : "tic-tac-toe--winner-modal";
+
   return (
-    <div className="tic-tac-toe--winner-modal tic-tac-toe--winner-modal-show">
+    <div className={className}>
       <div className="tic-tac-toe--modal-body">
-        <h2 className="tic-tac-toe--modal-title">🥳Congratulations!🥳</h2>
-        <p className="tic-tac-toe--modal-description">The winner is:</p>
-        <img
-          src={initialPlayersData[0].imgSrc}
-          alt="Winner player"
-          className="tic-tac-toe--modal-player-img"
-        />
+        {winnerPlayerImg && (
+          <>
+            <h2 className="tic-tac-toe--modal-title">🥳Congratulations!🥳</h2>
+            <p className="tic-tac-toe--modal-description">The winner is:</p>
+            <img
+              src={winnerPlayerImg.imgSrc}
+              alt="Winner player"
+              className="tic-tac-toe--modal-player-img"
+            />
+          </>
+        )}
+
+        {!winnerPlayerImg && (
+          <>
+            <h2 className="tic-tac-toe--modal-title">😅It is a tie!😅</h2>
+            <p className="tic-tac-toe--modal-description">
+              There is no winner this time
+            </p>
+          </>
+        )}
         <button className="tic-tac-toe--modal-play-again-button">
           Play again
         </button>
@@ -21,4 +44,4 @@ const ModalWinner = () => {
   );
 };
 
-export default ModalWinner;
+export default WinnerModal;
