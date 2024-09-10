@@ -5,11 +5,11 @@ import initialPlayersData from "../../data/initialPlayersData";
 const WinnerModal = ({ winnerPlayer, playAgain }) => {
   if (winnerPlayer === null) return;
 
-  const winnerPlayerImg = initialPlayersData.find(
+  const currentWinnerPlayer = initialPlayersData.find(
     (player) => player.imgSrc === winnerPlayer
   );
 
-  if (winnerPlayerImg) {
+  if (currentWinnerPlayer) {
     document.body.classList.add("no-scroll");
   }
 
@@ -21,19 +21,19 @@ const WinnerModal = ({ winnerPlayer, playAgain }) => {
   return (
     <div className="tic-tac-toe--winner-modal">
       <div className="tic-tac-toe--modal-body">
-        {winnerPlayerImg && (
+        {currentWinnerPlayer && (
           <>
             <h2 className="tic-tac-toe--modal-title">🥳Congratulations!🥳</h2>
             <p className="tic-tac-toe--modal-description">The winner is:</p>
             <img
-              src={winnerPlayerImg.imgSrc}
+              src={currentWinnerPlayer.imgSrc}
               alt="Winner player"
               className="tic-tac-toe--modal-player-img"
             />
           </>
         )}
 
-        {!winnerPlayerImg && (
+        {!currentWinnerPlayer && (
           <>
             <h2 className="tic-tac-toe--modal-title">😅It is a tie!😅</h2>
             <p className="tic-tac-toe--modal-description">
