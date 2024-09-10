@@ -6,6 +6,7 @@ import initialPlayersData from "../../data/initialPlayersData";
 import winnerCombinationsData from "../../data/winnerCombinationsData";
 
 import Square from "../Square/Square";
+import Score from "../Score/Score";
 import Player from "../Player/Player";
 import WinnerModal from "../WinnerModal/WinnerModal";
 import EditPlayerNameModal from "../EditPlayerNameModal/EditPlayerNameModal";
@@ -16,6 +17,7 @@ const Board = () => {
   const [board, setBoard] = useState(Array(9).fill(null)); // Initial null values
   const [turn, setTurn] = useState(dataX.imgSrc); // X
   const [playerNames, setPlayerNames] = useState([dataX.name, dataO.name]);
+  const [scores, setScores] = useState([0, 0]);
   const [winner, setWinner] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -55,6 +57,13 @@ const Board = () => {
 
     if (newWinner) {
       setWinner(newWinner);
+
+      // Update the score
+      const newScores = [...scores];
+      const winnerIndex = newWinner === dataX.imgSrc ? 0 : 1;
+      newScores[winnerIndex] = newScores[winnerIndex] + 1;
+
+      setScores(newScores);
     } else {
       // Check if it is a tie
       const isTie = newBoard.every((square) => square !== null);
@@ -100,6 +109,8 @@ const Board = () => {
           );
         })}
       </div>
+
+      <Score scores={scores} />
 
       <div className="tic-tac-toe--players">
         {initialPlayersData.map((player) => {

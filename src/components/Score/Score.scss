@@ -1,0 +1,16 @@
+$yellow_primary: #f5d24b;
+
+.tic-tac-toe--score {
+  font-size: 60px;
+  line-height: 64px;
+  color: $yellow_primary;
+  margin-top: 40px;
+  @media (min-width: 375px) {
+    font-size: 70px;
+    line-height: 74px;
+  }
+  @media (min-width: 768px) {
+    font-size: 90px;
+    line-height: 94px;
+  }
+}
