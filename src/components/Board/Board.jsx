@@ -15,6 +15,7 @@ const Board = () => {
 
   const [board, setBoard] = useState(Array(9).fill(null)); // Initial null values
   const [turn, setTurn] = useState(dataX.imgSrc); // X
+  const [playerNames, setPlayerNames] = useState([dataX.name, dataO.name]);
   const [winner, setWinner] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -70,9 +71,22 @@ const Board = () => {
     setWinner(null);
   };
 
-  const checkShowEditModal = (showModal) => {
+  const checkShowEditModal = (newImgSrc, showModal) => {
     const newShowEditModal = showModal ? true : false;
+
+    if (newShowEditModal) {
+      setTurn(newImgSrc);
+    }
+
     setShowEditModal(newShowEditModal);
+  };
+
+  const updatePlayerName = (playerImg, newName) => {
+    const newPlayerNames = [...playerNames];
+    const playerIndex = playerImg === dataX.imgSrc ? 0 : 1;
+
+    newPlayerNames[playerIndex] = newName;
+    setPlayerNames(newPlayerNames);
   };
 
   return (
@@ -89,12 +103,12 @@ const Board = () => {
 
       <div className="tic-tac-toe--players">
         {initialPlayersData.map((player) => {
-          const { id, name, imgSrc, alt } = player;
+          const { id, imgSrc, alt } = player;
 
           return (
             <Player
               key={id}
-              initialName={name}
+              name={playerNames[id - 1]}
               imgSrc={imgSrc}
               alt={alt}
               isYourTurn={turn === imgSrc}
@@ -109,10 +123,12 @@ const Board = () => {
       </button>
 
       <WinnerModal winnerPlayer={winner} playAgain={playAgain} />
+
       {showEditModal && (
         <EditPlayerNameModal
           playerImg={turn}
           checkShowEditModal={checkShowEditModal}
+          updatePlayerName={updatePlayerName}
         />
       )}
     </>
