@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import confetti from "canvas-confetti";
+
 import "./Board.scss";
 
 import initialPlayersData from "../../data/initialPlayersData";
@@ -57,6 +59,8 @@ const Board = () => {
 
     if (newWinner) {
       setWinner(newWinner);
+
+      confetti();
 
       // Update the score
       const newScores = [...scores];
