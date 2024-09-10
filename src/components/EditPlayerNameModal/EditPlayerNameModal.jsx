@@ -4,23 +4,37 @@ import "./EditPlayerNameModal.scss";
 
 import CloseIcon from "../../assets/icons/CloseIcon.svg";
 
-const EditPlayerNameModal = ({ playerImg, checkShowEditModal }) => {
-  const [name, setName] = useState("");
+const EditPlayerNameModal = ({
+  playerImg,
+  checkShowEditModal,
+  updatePlayerName,
+}) => {
+  const [inputName, setInputName] = useState("");
+
+  const handleCloseClick = () => {
+    checkShowEditModal(false);
+  };
 
   const handleNameInput = (event) => {
     const { value } = event.target;
 
-    setName(value);
+    setInputName(value);
   };
 
-  const handleAcceptClick = () => {
+  const handleAcceptClick = (playerImg, newName) => {
+    // Save the player new name
+    updatePlayerName(playerImg, newName);
+
     checkShowEditModal(false);
   };
 
   return (
     <div className="tic-tac-toe--edit-player-name-modal">
       <div className="tic-tac-toe--modal-body">
-        <button className="tic-tac-toe--modal-close-button">
+        <button
+          className="tic-tac-toe--modal-close-button"
+          onClick={handleCloseClick}
+        >
           <img src={CloseIcon} alt="close icon" />
         </button>
         <img
@@ -32,12 +46,12 @@ const EditPlayerNameModal = ({ playerImg, checkShowEditModal }) => {
         <input
           type="text"
           className="tic-tac-toe--modal-text-input"
-          value={name}
+          value={inputName}
           onChange={handleNameInput}
         />
         <button
           className="tic-tac-toe--modal-accept-button"
-          onClick={handleAcceptClick}
+          onClick={() => handleAcceptClick(playerImg, inputName)}
         >
           Accept
         </button>

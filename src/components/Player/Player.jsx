@@ -2,15 +2,9 @@
 
 import "./Player.scss";
 
-const Player = ({
-  initialName,
-  imgSrc,
-  alt,
-  isYourTurn,
-  checkShowEditModal,
-}) => {
+const Player = ({ name, imgSrc, alt, isYourTurn, checkShowEditModal }) => {
   const handleChangeNameClick = (imgSrc) => {
-    checkShowEditModal(true);
+    checkShowEditModal(imgSrc, true);
   };
 
   const className = isYourTurn
@@ -23,7 +17,7 @@ const Player = ({
         <div className={className}>
           <img src={imgSrc} alt={alt} className="tic-tac-toe-player--img" />
         </div>
-        <h2 className="tic-tac-toe-player--name">{initialName}</h2>
+        <h2 className="tic-tac-toe-player--name">{name}</h2>
         <button
           className="tic-tac-toe-player--change-name-button"
           onClick={() => handleChangeNameClick(imgSrc)}
