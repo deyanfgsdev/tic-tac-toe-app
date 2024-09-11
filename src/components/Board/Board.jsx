@@ -84,6 +84,11 @@ const Board = () => {
     setWinner(null);
   };
 
+  const restartGame = () => {
+    playAgain();
+    setScores([0, 0]);
+  };
+
   const checkShowEditModal = (newImgSrc, showModal) => {
     const newShowEditModal = showModal ? true : false;
 
@@ -133,7 +138,10 @@ const Board = () => {
         })}
       </div>
 
-      <button className="tic-tac-toe--restart-game-button" onClick={playAgain}>
+      <button
+        className="tic-tac-toe--restart-game-button"
+        onClick={restartGame}
+      >
         Restart game
       </button>
 
