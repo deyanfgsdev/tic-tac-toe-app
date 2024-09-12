@@ -2,11 +2,20 @@
 
 <img src="https://i.ibb.co/bWCg9jz/tic-tac-toe-cover.jpg" alt="Tic Tac Toe Cover" title="Tic Tac Toe Game" />
 
-## Built with:
+## Description
+
+This is an application of the classic **Tic-Tac-Toe** game, developed with **React**. The object of the game is to line up three symbols in a row, column or diagonal to win.
+You can play against a friend on the same device.
+
+[Try the app here!](https://tic-tac-toe-app-iota.vercel.app/)
+
+## Technologies used
+
+### Built with:
 
 ![My Skills](https://skillicons.dev/icons?i=react,vite,js,html,sass)
 
-## Misc tools:
+### Misc tools:
 
 ![My Skills](https://skillicons.dev/icons?i=figma)
 
@@ -14,6 +23,22 @@
 
 ![My Skills](https://skillicons.dev/icons?i=vercel)
 
-## Link to app:
+## Installation and setup
 
-[Tic Tac Toe Game](https://tic-tac-toe-app-iota.vercel.app/)
+### Requirements:
+
+- Node.js (>= 16.0)
+- npm or yarn
+
+### Instructions:
+
+```
+git clone https://github.com/deyanfgsdev/tic-tac-toe-app.git
+cd tic-tac-toe-app
+npm install
+npm run dev
+```
+
+## License
+
+Copyright (c) [2024] [Deyán Fabricio Guacarán Sabogal]
