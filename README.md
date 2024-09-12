@@ -16,4 +16,4 @@
 
 ## Link to app:
 
-<a href="https://tic-tac-toe-app-iota.vercel.app/" target="_blank">Tic Tac Toe Game</a>
+[Tic Tac Toe Game](https://tic-tac-toe-app-iota.vercel.app/)
