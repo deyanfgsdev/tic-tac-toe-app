@@ -41,4 +41,4 @@ npm run dev
 
 ## Copyright
 
-Copyright © 2024 [Deyán Fabricio Guacarán Sabogal]
+© 2024 Deyán Fabricio Guacarán Sabogal. All rights reserved.
