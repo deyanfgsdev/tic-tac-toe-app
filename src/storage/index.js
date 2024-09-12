@@ -9,7 +9,6 @@ export const storageSaveGame = ({ board, turn, scores }) => {
 
 export const storagePlayAgain = () => {
   localStorage.removeItem("tic-tac-toe--board");
-  localStorage.removeItem("tic-tac-toe--turn");
 };
 
 export const storageRestartGame = () => {

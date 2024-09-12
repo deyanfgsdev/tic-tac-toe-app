@@ -117,7 +117,11 @@ const Board = () => {
       setScores(newScores);
 
       // Save the game with the scores
-      storageSaveGame({ board: newBoard, turn: newTurn, scores: newScores });
+      storageSaveGame({
+        board: newBoard,
+        turn: newWinner,
+        scores: newScores,
+      });
     } else {
       // Check if it is a tie
       const isTie = newBoard.every((square) => square !== null);
@@ -133,6 +137,9 @@ const Board = () => {
 
     if (newShowEditModal) {
       setTurn(newImgSrc);
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
     }
 
     setShowEditModal(newShowEditModal);
@@ -150,11 +157,16 @@ const Board = () => {
     );
   };
 
-  const playAgain = () => {
+  const playAgain = (newWinner) => {
     storagePlayAgain();
-
     setBoard(Array(9).fill(null));
-    setTurn(dataX.imgSrc);
+
+    if (newWinner) {
+      setTurn(newWinner);
+    } else {
+      setTurn(dataX.imgSrc);
+    }
+
     setWinner(null);
   };
 
@@ -201,7 +213,7 @@ const Board = () => {
         Restart game
       </button>
 
-      <WinnerModal winnerPlayer={winner} playAgain={playAgain} />
+      <WinnerModal winnerPlayer={winner} playAgain={() => playAgain(winner)} />
 
       {showEditModal && (
         <EditPlayerNameModal
