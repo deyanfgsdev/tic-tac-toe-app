@@ -39,6 +39,6 @@ npm install
 npm run dev
 ```
 
-## License
+## Copyright
 
-Copyright (c) [2024] [Deyán Fabricio Guacarán Sabogal]
+Copyright © 2024 [Deyán Fabricio Guacarán Sabogal]
