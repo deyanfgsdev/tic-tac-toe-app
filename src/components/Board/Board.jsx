@@ -172,6 +172,8 @@ const Board = () => {
 
   const handleRestartGameClick = () => {
     storageRestartGame();
+    setBoard(Array(9).fill(null));
+    setTurn(dataX.imgSrc);
     setScores([0, 0]);
   };
 
