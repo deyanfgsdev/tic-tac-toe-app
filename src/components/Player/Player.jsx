@@ -22,7 +22,7 @@ const Player = ({ name, imgSrc, alt, isYourTurn, checkShowEditModal }) => {
           className="tic-tac-toe-player--change-name-button"
           onClick={() => handleChangeNameClick(imgSrc)}
         >
-          Change Name
+          Change name
         </button>
       </div>
     </>

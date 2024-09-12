@@ -10,8 +10,10 @@ const EditPlayerNameModal = ({
   updatePlayerName,
 }) => {
   const [inputName, setInputName] = useState("");
+  const [showInputErrorMessage, setInputShowErrorMessage] = useState(false);
 
   const handleCloseClick = () => {
+    document.body.classList.remove("no-scroll");
     checkShowEditModal(false);
   };
 
@@ -19,9 +21,16 @@ const EditPlayerNameModal = ({
     const { value } = event.target;
 
     setInputName(value);
+    setInputShowErrorMessage(false);
   };
 
   const handleAcceptClick = (playerImg, newName) => {
+    if (!newName) {
+      setInputShowErrorMessage(true);
+
+      return;
+    }
+
     // Save the player new name
     updatePlayerName(playerImg, newName);
 
@@ -49,6 +58,11 @@ const EditPlayerNameModal = ({
           value={inputName}
           onChange={handleNameInput}
         />
+        {showInputErrorMessage && (
+          <p className="tic-tac-toe--input-error-message">
+            Please enter a name
+          </p>
+        )}
         <button
           className="tic-tac-toe--modal-accept-button"
           onClick={() => handleAcceptClick(playerImg, inputName)}

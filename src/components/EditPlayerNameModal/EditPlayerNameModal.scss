@@ -1,5 +1,6 @@
 $yellow_primary: #f5d24b;
 $grey_primary: #656565;
+$red_primary: #d63232;
 
 .tic-tac-toe--edit-player-name-modal {
   position: fixed;
@@ -80,6 +81,22 @@ $grey_primary: #656565;
       outline: none;
       padding: 8px;
       margin-top: 8px;
+    }
+    .tic-tac-toe--input-error-message {
+      color: $red_primary;
+      font-size: 12px;
+      line-height: 16px;
+      width: 100%;
+      margin-top: 8px;
+      margin-bottom: 0;
+      @media (min-width: 375px) {
+        font-size: 14px;
+        line-height: 18px;
+      }
+      @media (min-width: 768px) {
+        font-size: 16px;
+        line-height: 20px;
+      }
     }
     .tic-tac-toe--modal-accept-button {
       display: block;
