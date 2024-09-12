@@ -6,6 +6,11 @@ import "./Board.scss";
 
 import initialPlayersData from "../../data/initialPlayersData";
 import winnerCombinationsData from "../../data/winnerCombinationsData";
+import {
+  storageSaveGame,
+  storagePlayAgain,
+  storageRestartGame,
+} from "../../storage";
 
 import Square from "../Square/Square";
 import Score from "../Score/Score";
@@ -16,10 +21,46 @@ import EditPlayerNameModal from "../EditPlayerNameModal/EditPlayerNameModal";
 const Board = () => {
   const [dataX, dataO] = initialPlayersData;
 
-  const [board, setBoard] = useState(Array(9).fill(null)); // Initial null values
-  const [turn, setTurn] = useState(dataX.imgSrc); // X
-  const [playerNames, setPlayerNames] = useState([dataX.name, dataO.name]);
-  const [scores, setScores] = useState([0, 0]);
+  const [board, setBoard] = useState(() => {
+    const storageBoard = JSON.parse(localStorage.getItem("tic-tac-toe--board"));
+
+    if (storageBoard) {
+      return storageBoard;
+    }
+
+    return Array(9).fill(null);
+  });
+  const [turn, setTurn] = useState(() => {
+    const storageTurn = JSON.parse(localStorage.getItem("tic-tac-toe--turn"));
+
+    if (storageTurn) {
+      return storageTurn;
+    }
+
+    return dataX.imgSrc;
+  });
+  const [playerNames, setPlayerNames] = useState(() => {
+    const storagePlayerNames = JSON.parse(
+      localStorage.getItem("tic-tac-toe--player-names")
+    );
+
+    if (storagePlayerNames) {
+      return storagePlayerNames;
+    }
+
+    return [dataX.name, dataO.name];
+  });
+  const [scores, setScores] = useState(() => {
+    const storageScores = JSON.parse(
+      localStorage.getItem("tic-tac-toe--scores")
+    );
+
+    if (storageScores) {
+      return storageScores;
+    }
+
+    return [0, 0];
+  });
   const [winner, setWinner] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -54,6 +95,13 @@ const Board = () => {
     const newTurn = turn === dataX.imgSrc ? dataO.imgSrc : dataX.imgSrc;
     setTurn(newTurn);
 
+    // Save the game
+    storageSaveGame({
+      board: newBoard,
+      turn: newTurn,
+      scores: null,
+    });
+
     // Check if there is a winner
     const newWinner = checkWinnerPlayer(newBoard);
 
@@ -66,8 +114,10 @@ const Board = () => {
       const newScores = [...scores];
       const winnerIndex = newWinner === dataX.imgSrc ? 0 : 1;
       newScores[winnerIndex] = newScores[winnerIndex] + 1;
-
       setScores(newScores);
+
+      // Save the game with the scores
+      storageSaveGame({ board: newBoard, turn: newTurn, scores: newScores });
     } else {
       // Check if it is a tie
       const isTie = newBoard.every((square) => square !== null);
@@ -76,17 +126,6 @@ const Board = () => {
         setWinner(false);
       }
     }
-  };
-
-  const playAgain = () => {
-    setBoard(Array(9).fill(null));
-    setTurn(dataX.imgSrc);
-    setWinner(null);
-  };
-
-  const restartGame = () => {
-    playAgain();
-    setScores([0, 0]);
   };
 
   const checkShowEditModal = (newImgSrc, showModal) => {
@@ -105,6 +144,23 @@ const Board = () => {
 
     newPlayerNames[playerIndex] = newName;
     setPlayerNames(newPlayerNames);
+    localStorage.setItem(
+      "tic-tac-toe--player-names",
+      JSON.stringify(newPlayerNames)
+    );
+  };
+
+  const playAgain = () => {
+    storagePlayAgain();
+
+    setBoard(Array(9).fill(null));
+    setTurn(dataX.imgSrc);
+    setWinner(null);
+  };
+
+  const handleRestartGameClick = () => {
+    storageRestartGame();
+    setScores([0, 0]);
   };
 
   return (
@@ -140,7 +196,7 @@ const Board = () => {
 
       <button
         className="tic-tac-toe--restart-game-button"
-        onClick={restartGame}
+        onClick={handleRestartGameClick}
       >
         Restart game
       </button>
