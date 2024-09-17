@@ -1,15 +1,15 @@
-import "./Logo.scss";
+import './Logo.scss'
 
 const Logo = ({ logoSrc }) => {
   return (
-    <div className="tic-tac-toe--logo">
+    <div className='tic-tac-toe--logo'>
       <img
         src={logoSrc}
-        alt="Tic Tac Toe Logo"
-        className="tic-tac-toe--logo-img"
+        alt='Tic Tac Toe Logo'
+        className='tic-tac-toe--logo-img'
       />
     </div>
-  );
-};
+  )
+}
 
-export default Logo;
+export default Logo

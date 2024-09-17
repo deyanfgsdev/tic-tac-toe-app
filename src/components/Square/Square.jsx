@@ -1,28 +1,28 @@
-import "./Square.scss";
+import './Square.scss'
 
-import initialPlayersData from "../../data/initialPlayersData";
+import initialPlayersData from '../../data/initialPlayersData'
 
 const Square = ({ children, index, updateBoard }) => {
   const playerAlt =
     children === initialPlayersData[0].imgSrc
       ? initialPlayersData[0].alt
-      : initialPlayersData[1].alt;
+      : initialPlayersData[1].alt
 
   const handleSquareClick = () => {
-    updateBoard(index);
-  };
+    updateBoard(index)
+  }
 
   return (
-    <div className="tic-tac-toe--square" onClick={handleSquareClick}>
+    <div className='tic-tac-toe--square' onClick={handleSquareClick}>
       {children && (
         <img
           src={children}
           alt={playerAlt}
-          className="tic-tac-toe--square-img"
+          className='tic-tac-toe--square-img'
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Square;
+export default Square
