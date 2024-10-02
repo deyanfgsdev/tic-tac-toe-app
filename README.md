@@ -9,19 +9,21 @@ You can play against a friend on the same device.
 
 [Try the app here!](https://tic-tac-toe-app-iota.vercel.app/)
 
+Design used: [here](https://www.figma.com/community/file/893942075601804557)
+
 ## Technologies used
 
 ### Built with:
 
-![My Skills](https://skillicons.dev/icons?i=react,vite,js,html,sass)
+![Skills](https://skillicons.dev/icons?i=react,vite,js,html,sass)
 
 ### Misc tools:
 
-![My Skills](https://skillicons.dev/icons?i=figma)
+![Skills](https://skillicons.dev/icons?i=figma)
 
 ## Deployed in:
 
-![My Skills](https://skillicons.dev/icons?i=vercel)
+![Skills](https://skillicons.dev/icons?i=vercel)
 
 ## Installation and setup
 
