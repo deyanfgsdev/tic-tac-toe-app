@@ -15,15 +15,15 @@ Design used: [here](https://www.figma.com/community/file/893942075601804557)
 
 ### Built with:
 
-![Skills](https://skillicons.dev/icons?i=react,vite,js,html,sass)
+![Skills](https://go-skill-icons.vercel.app/api/icons?i=react,vite,javascript,html,sass)
 
 ### Misc tools:
 
-![Skills](https://skillicons.dev/icons?i=figma)
+![Skills](https://go-skill-icons.vercel.app/api/icons?i=figma)
 
 ## Deployed in:
 
-![Skills](https://skillicons.dev/icons?i=vercel)
+![Skills](https://go-skill-icons.vercel.app/api/icons?i=vercel)
 
 ## Installation and setup
 
