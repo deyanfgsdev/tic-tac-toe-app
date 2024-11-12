@@ -16,7 +16,7 @@ Design used: [here](https://www.figma.com/community/file/893942075601804557)
 - Edit player names
 - Restart the game
 - Browser data persistence
-- Design responsive
+- Responsive design
 
 ## Technologies used
 
