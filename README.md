@@ -11,6 +11,11 @@ You can play against a friend on the same device.
 
 Design used: [here](https://www.figma.com/community/file/893942075601804557)
 
+## 🚀Features
+
+- Edit player names
+- Restart the game
+
 ## Technologies used
 
 ### Built with:
