@@ -18,3 +18,9 @@ interface Player {
 }
 
 export type PlayerList = Player[];
+
+/* Winner Combinations */
+
+type WinnerCombination = [number, number, number];
+
+export type WinnerCombinations = WinnerCombination[];
