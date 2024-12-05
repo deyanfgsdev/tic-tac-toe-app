@@ -7,3 +7,14 @@ interface SocialMedia {
 }
 
 export type SocialMediaList = SocialMedia[];
+
+/* Player */
+
+interface Player {
+  id: number;
+  name: string;
+  imgSrc: `https://i.ibb.co/${string}/${string}`;
+  alt: string;
+}
+
+export type PlayerList = Player[];
