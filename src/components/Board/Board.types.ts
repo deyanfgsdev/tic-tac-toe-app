@@ -1,4 +1,5 @@
 import { Player } from '../../types/global';
+import { Scores } from '../Score/Score.types';
 
 export type PlayerData = [Player, Player];
 type Cell = Player['imgSrc'] | null;
@@ -11,7 +12,6 @@ export type PlayerNamesState = [
   PlayerNames,
   (newPlayerNames: PlayerNames) => void,
 ];
-export type Scores = [number, number];
 export type ScoresState = [Scores, (newScores: Scores) => void];
 export type Winner = null | Player['imgSrc'] | false;
 export type WinnerState = [Winner, (newWinner: Winner) => void];

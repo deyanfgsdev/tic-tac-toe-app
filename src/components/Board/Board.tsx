@@ -12,12 +12,12 @@ import type {
   TurnState,
   PlayerNames,
   PlayerNamesState,
-  Scores,
   ScoresState,
   Winner,
   WinnerState,
   ShowEditModalState,
 } from './Board.types';
+import { Scores } from '../Score/Score.types';
 
 import initialPlayersData from '../../data/initialPlayersData';
 import winnerCombinationsData from '../../data/winnerCombinationsData';
