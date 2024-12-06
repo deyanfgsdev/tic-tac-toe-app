@@ -9,7 +9,7 @@ export const storageSaveGame = ({
 }: {
   board: Board;
   turn: Player['imgSrc'];
-  scores: Scores;
+  scores: Scores | null;
 }) => {
   window.localStorage.setItem('tic-tac-toe--board', JSON.stringify(board));
   window.localStorage.setItem('tic-tac-toe--turn', JSON.stringify(turn));

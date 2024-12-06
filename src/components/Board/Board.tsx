@@ -4,7 +4,20 @@ import confetti from 'canvas-confetti';
 
 import './Board.scss';
 
-import type { Board, BoardState, Turn, TurnState } from './Board.types';
+import { Player as GlobalPlayer } from '../../types/global';
+import type {
+  Board,
+  BoardState,
+  Turn,
+  TurnState,
+  PlayerNames,
+  PlayerNamesState,
+  Scores,
+  ScoresState,
+  Winner,
+  WinnerState,
+  ShowEditModalState,
+} from './Board.types';
 
 import initialPlayersData from '../../data/initialPlayersData';
 import winnerCombinationsData from '../../data/winnerCombinationsData';
@@ -49,21 +62,30 @@ const Board = () => {
     return dataX.imgSrc;
   });
 
-  const [playerNames, setPlayerNames] = useState(() => {
-    const storagePlayerNames = JSON.parse(
-      window.localStorage.getItem('tic-tac-toe--player-names')
-    );
+  const [playerNames, setPlayerNames]: PlayerNamesState = useState<PlayerNames>(
+    () => {
+      const storagePlayerNamesItem = window.localStorage.getItem(
+        'tic-tac-toe--player-names'
+      );
+      const storagePlayerNames: PlayerNames | null = storagePlayerNamesItem
+        ? JSON.parse(storagePlayerNamesItem)
+        : null;
 
-    if (storagePlayerNames) {
-      return storagePlayerNames;
+      if (storagePlayerNames) {
+        return storagePlayerNames;
+      }
+
+      return [dataX.name, dataO.name];
     }
+  );
 
-    return [dataX.name, dataO.name];
-  });
-  const [scores, setScores] = useState(() => {
-    const storageScores = JSON.parse(
-      window.localStorage.getItem('tic-tac-toe--scores')
+  const [scores, setScores]: ScoresState = useState<Scores>(() => {
+    const storageScoresItem = window.localStorage.getItem(
+      'tic-tac-toe--scores'
     );
+    const storageScores: Scores | null = storageScoresItem
+      ? JSON.parse(storageScoresItem)
+      : null;
 
     if (storageScores) {
       return storageScores;
@@ -71,10 +93,12 @@ const Board = () => {
 
     return [0, 0];
   });
-  const [winner, setWinner] = useState(null);
-  const [showEditModal, setShowEditModal] = useState(false);
 
-  const checkWinnerPlayer = (newBoard) => {
+  const [winner, setWinner]: WinnerState = useState<Winner>(null);
+  const [showEditModal, setShowEditModal]: ShowEditModalState =
+    useState<boolean>(false);
+
+  const checkWinnerPlayer = (newBoard: Board) => {
     for (const combination of winnerCombinationsData) {
       const [a, b, c] = combination;
 
@@ -90,14 +114,14 @@ const Board = () => {
     return null; // No winner
   };
 
-  const updateBoard = (index) => {
+  const updateBoard = (index: number) => {
     // If the square is already filled or there is a winner
     if (board[index] || winner) {
       return;
     }
 
     // Update with the new board
-    const newBoard = [...board];
+    const newBoard: Board = [...board];
     newBoard[index] = turn;
     setBoard(newBoard);
 
@@ -121,7 +145,7 @@ const Board = () => {
       confetti();
 
       // Update the score
-      const newScores = [...scores];
+      const newScores: Scores = [...scores];
       const winnerIndex = newWinner === dataX.imgSrc ? 0 : 1;
       newScores[winnerIndex] = newScores[winnerIndex] + 1;
       setScores(newScores);
@@ -142,7 +166,10 @@ const Board = () => {
     }
   };
 
-  const checkShowEditModal = (newImgSrc, showModal) => {
+  const checkShowEditModal = (
+    newImgSrc: GlobalPlayer['imgSrc'],
+    showModal: boolean
+  ) => {
     const newShowEditModal = !!showModal;
 
     if (newShowEditModal) {
@@ -155,8 +182,11 @@ const Board = () => {
     setShowEditModal(newShowEditModal);
   };
 
-  const updatePlayerName = (playerImg, newName) => {
-    const newPlayerNames = [...playerNames];
+  const updatePlayerName = (
+    playerImg: GlobalPlayer['imgSrc'],
+    newName: string
+  ) => {
+    const newPlayerNames: PlayerNames = [...playerNames];
     const playerIndex = playerImg === dataX.imgSrc ? 0 : 1;
 
     newPlayerNames[playerIndex] = newName;
@@ -167,9 +197,11 @@ const Board = () => {
     );
   };
 
-  const playAgain = (newWinner) => {
+  const playAgain = (newWinner: Winner) => {
     storagePlayAgain();
-    setBoard(Array(9).fill(null));
+
+    const newBoard = Array(9).fill(null) as Board;
+    setBoard(newBoard);
 
     if (newWinner) {
       setTurn(newWinner);
@@ -182,7 +214,10 @@ const Board = () => {
 
   const handleRestartGameClick = () => {
     storageRestartGame();
-    setBoard(Array(9).fill(null));
+
+    const newBoard = Array(9).fill(null) as Board;
+    setBoard(newBoard);
+
     setTurn(dataX.imgSrc);
     setScores([0, 0]);
   };
