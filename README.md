@@ -22,7 +22,7 @@ Design used: [here](https://www.figma.com/community/file/893942075601804557)
 
 ### Built with:
 
-![Skills](https://go-skill-icons.vercel.app/api/icons?i=react,vite,javascript,html,sass)
+![Skills](https://go-skill-icons.vercel.app/api/icons?i=react,vite,typescript,html,sass)
 
 ### Misc tools:
 
