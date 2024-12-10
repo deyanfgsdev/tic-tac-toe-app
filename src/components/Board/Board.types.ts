@@ -1,7 +1,6 @@
 import { Player } from '../../types/global';
 import { Scores } from '../Score/Score.types';
 
-export type PlayerData = [Player, Player];
 type Cell = Player['imgSrc'] | null;
 export type Board = [Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell];
 export type BoardState = [Board, (newBoard: Board) => void];
