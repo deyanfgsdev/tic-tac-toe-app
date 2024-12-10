@@ -167,13 +167,16 @@ const Board = () => {
   };
 
   const checkShowEditModal = (
-    newImgSrc: GlobalPlayer['imgSrc'],
-    showModal: boolean
+    showModal: boolean,
+    newImgSrc?: GlobalPlayer['imgSrc']
   ) => {
     const newShowEditModal = !!showModal;
 
     if (newShowEditModal) {
-      setTurn(newImgSrc);
+      if (newImgSrc) {
+        setTurn(newImgSrc);
+      }
+
       document.body.classList.add('no-scroll');
     } else {
       document.body.classList.remove('no-scroll');

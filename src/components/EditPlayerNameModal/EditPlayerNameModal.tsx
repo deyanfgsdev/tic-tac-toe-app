@@ -17,7 +17,10 @@ const EditPlayerNameModal = ({
   updatePlayerName,
 }: {
   playerImg: Turn;
-  checkShowEditModal: (newImgSrc: Player['imgSrc'], showModal: boolean) => void;
+  checkShowEditModal: (
+    showModal: boolean,
+    newImgSrc?: Player['imgSrc']
+  ) => void;
   updatePlayerName: (playerImg: Player['imgSrc'], newName: string) => void;
 }) => {
   const [inputName, setInputName]: InputNameState = useState<string>('');
@@ -28,7 +31,7 @@ const EditPlayerNameModal = ({
 
   const handleCloseClick = () => {
     document.body.classList.remove('no-scroll');
-    checkShowEditModal(playerImg, false);
+    checkShowEditModal(false);
   };
 
   const handleNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,7 +51,7 @@ const EditPlayerNameModal = ({
     // Save the player new name
     updatePlayerName(playerImg, newName);
 
-    checkShowEditModal(playerImg, false);
+    checkShowEditModal(false);
   };
 
   return (

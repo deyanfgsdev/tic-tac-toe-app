@@ -14,12 +14,12 @@ const Player = ({
   alt: string;
   isYourTurn: boolean;
   checkShowEditModal: (
-    newImgSrc: GlobalPlayer['imgSrc'],
-    showModal: boolean
+    showModal: boolean,
+    newImgSrc?: GlobalPlayer['imgSrc']
   ) => void;
 }) => {
   const handleChangeNameClick = (imgSrc: GlobalPlayer['imgSrc']) => {
-    checkShowEditModal(imgSrc, true);
+    checkShowEditModal(true, imgSrc);
   };
 
   const className = isYourTurn
