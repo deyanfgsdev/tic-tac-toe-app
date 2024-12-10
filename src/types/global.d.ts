@@ -23,4 +23,13 @@ export type PlayerList = Player[];
 
 type WinnerCombination = [number, number, number];
 
-export type WinnerCombinations = WinnerCombination[];
+export type WinnerCombinations = [
+  WinnerCombination,
+  WinnerCombination,
+  WinnerCombination,
+  WinnerCombination,
+  WinnerCombination,
+  WinnerCombination,
+  WinnerCombination,
+  WinnerCombination,
+];
