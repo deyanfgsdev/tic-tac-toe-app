@@ -1,8 +1,8 @@
-import { PlayerList } from '../types/global';
+import { Players } from '../types/global';
 
 const MAIN_IMAGES_URL = 'https://i.ibb.co';
 
-const initialPlayersData: PlayerList = [
+const initialPlayersData: Players = [
   {
     id: 1,
     name: 'Player 1',

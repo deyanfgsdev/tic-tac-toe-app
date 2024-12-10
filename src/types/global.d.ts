@@ -17,7 +17,7 @@ export interface Player {
   alt: string;
 }
 
-export type PlayerList = Player[];
+export type Players = [Player, Player];
 
 /* Winner Combinations */
 
