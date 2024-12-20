@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import confetti from 'canvas-confetti';
 
@@ -114,56 +114,62 @@ const Board = () => {
     return null; // No winner
   };
 
-  const updateBoard = (index: number) => {
-    // If the square is already filled or there is a winner
-    if (board[index] || winner) {
-      return;
-    }
-
-    // Update with the new board
-    const newBoard: Board = [...board];
-    newBoard[index] = turn;
-    setBoard(newBoard);
-
-    // Update the turn
-    const newTurn = turn === dataX.imgSrc ? dataO.imgSrc : dataX.imgSrc;
-    setTurn(newTurn);
-
-    // Save the game
-    storageSaveGame({
-      board: newBoard,
-      turn: newTurn,
-      scores: null,
-    });
-
+  useEffect(() => {
     // Check if there is a winner
-    const newWinner = checkWinnerPlayer(newBoard);
+    const newWinner = checkWinnerPlayer(board);
 
     if (newWinner) {
       setWinner(newWinner);
 
       confetti();
 
-      // Update the score
-      const newScores: Scores = [...scores];
-      const winnerIndex = newWinner === dataX.imgSrc ? 0 : 1;
-      newScores[winnerIndex] = newScores[winnerIndex] + 1;
-      setScores(newScores);
+      setScores((prevState) => {
+        const newScores: Scores = [...prevState];
+        const winnerIndex = newWinner === dataX.imgSrc ? 0 : 1;
+        newScores[winnerIndex] = newScores[winnerIndex] + 1;
 
-      // Save the game with the scores
-      storageSaveGame({
-        board: newBoard,
-        turn: newWinner,
-        scores: newScores,
+        // Save the game with the scores
+        storageSaveGame({
+          board,
+          turn: newWinner,
+          scores: newScores,
+        });
+
+        return newScores;
       });
     } else {
       // Check if it is a tie
-      const isTie = newBoard.every((square) => square !== null);
+      const isTie = board.every((square) => square !== null);
 
       if (isTie) {
         setWinner(false);
       }
     }
+  }, [board, dataX.imgSrc]);
+
+  const updateBoard = (index: number) => {
+    // If the square is already filled or there is a winner
+    if (board[index] || winner) {
+      return;
+    }
+
+    // Update the turn
+    const newTurn = turn === dataX.imgSrc ? dataO.imgSrc : dataX.imgSrc;
+    setTurn(newTurn);
+
+    // Update with the new board
+    setBoard((prevState) => {
+      const newBoard: Board = [...prevState];
+      newBoard[index] = turn;
+
+      storageSaveGame({
+        board: newBoard,
+        turn: newTurn,
+        scores: null,
+      });
+
+      return newBoard;
+    });
   };
 
   const checkShowEditModal = (
@@ -189,15 +195,18 @@ const Board = () => {
     playerImg: GlobalPlayer['imgSrc'],
     newName: string
   ) => {
-    const newPlayerNames: PlayerNames = [...playerNames];
-    const playerIndex = playerImg === dataX.imgSrc ? 0 : 1;
+    setPlayerNames((prevState) => {
+      const newPlayerNames: PlayerNames = [...prevState];
+      const playerIndex = playerImg === dataX.imgSrc ? 0 : 1;
+      newPlayerNames[playerIndex] = newName;
 
-    newPlayerNames[playerIndex] = newName;
-    setPlayerNames(newPlayerNames);
-    window.localStorage.setItem(
-      'tic-tac-toe--player-names',
-      JSON.stringify(newPlayerNames)
-    );
+      window.localStorage.setItem(
+        'tic-tac-toe--player-names',
+        JSON.stringify(newPlayerNames)
+      );
+
+      return newPlayerNames;
+    });
   };
 
   const playAgain = (newWinner: Winner) => {
